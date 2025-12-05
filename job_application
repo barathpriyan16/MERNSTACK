@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    
+    <style>
+        h2{
+            text-align: center;
+        }
+        form{
+            width: 400px;
+            margin: 0 auto;
+        }
+        label{
+            font-weight: bold;
+        }
+        input, select, textarea{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Job Application Form</h2>
+
+    <form id="jobForm">
+        <label>Full Name</label>
+        <input id="name" type="text" placeholder="Enter your full name" required>
+
+        <label>Email</label>
+        <input id="email" type="email" placeholder="Enter your email" required>
+
+        <label>Phone Number</label>
+        <input id="phone" type="text" placeholder="Enter your phone number" required>
+
+        <label>Position Applying For</label>
+        <select id="position" required>
+            <option value="">Select position</option>
+            <option>Web Developer</option>
+            <option>AI/ML Engineer</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>Software Intern</option>
+        </select>
+
+        <label>Upload Resume</label>
+        <input id="resume" type="file" required>
+
+        <label>Cover Letter / Message</label>
+        <textarea id="message" placeholder="Write a short message..."></textarea>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("jobForm").addEventListener("submit", function(e){
+        e.preventDefault(); 
+
+        
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let position = document.getElementById("position").value;
+        let resume = document.getElementById("resume").files[0]?.name;  // only filename
+        let message = document.getElementById("message").value;
+
+        
+        const formData = {
+            Full_Name: name,
+            Email: email,
+            Phone: phone,
+            Position: position,
+            Resume_File: resume,
+            Cover_Message: message
+        };
+
+        
+        console.log("Job Application Submitted:");
+        console.log(formData);
+
+        alert("Application submitted! Check console for data.");
+    });
+</script>
+
+</body>
+</html>
